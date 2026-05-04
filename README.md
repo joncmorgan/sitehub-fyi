@@ -1,2 +1,2 @@
-# sitehub-fyi
-Digital Operations &amp; Engagement Portal for Building User Guides. Compliant with Green Star Performance v2.
+# Sitehub.fyi Distribution
+This repository hosts the static assets for the Sitehub.fyi Building Engagement Portals.

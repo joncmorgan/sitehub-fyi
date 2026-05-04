@@ -1,0 +1,118 @@
+/* pdf.css - v2.1.1 
+   Refined sizing for WeasyPrint PDF Generation.
+*/
+
+@page {
+    size: A4;
+    margin: 2cm;
+    @bottom-right {
+        content: "Page " counter(page) " of " counter(pages);
+        font-size: 9pt;
+        color: #64748b;
+    }
+    @bottom-left {
+        content: "Sitehub.fyi | Building User Guide";
+        font-size: 9pt;
+        color: #64748b;
+    }
+}
+
+/* Hide web-only elements in PDF */
+.no-print {
+    display: none !important;
+}
+
+/* Show PDF-only elements */
+.pdf-only {
+    display: block !important;
+}
+
+/* Cover Page Layout */
+.pdf-cover {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 25cm;
+    text-align: center;
+    page-break-after: always;
+}
+
+/* Force Page Breaks */
+.pdf-category-page {
+    page-break-before: always;
+}
+
+/* Prevent splitting cards across pages */
+.asset-card {
+    page-break-inside: avoid;
+    margin-bottom: 1cm;
+    border: 1px solid #e2e8f0;
+    padding: 20pt;
+}
+
+/* Label Sheet Layout for PDF */
+.pdf-label-section {
+    page-break-before: always;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.label-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20pt;
+    margin-top: 20pt;
+}
+
+.qr-sticker {
+    border: 1px solid #e2e8f0;
+    page-break-inside: avoid;
+    padding: 15pt;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Specific QR sizing for PDF */
+.qr-sticker img {
+    width: 3cm !important; /* Fixed physical size for scannability and aesthetics */
+    height: 3cm !important;
+    margin: 10pt auto;
+    display: block;
+}
+
+/* Typography Adjustments for Print */
+h1, h2, h3 {
+    color: #0f172a;
+}
+
+.category-header {
+    font-size: 18pt;
+    margin-bottom: 20pt;
+    border-bottom: 2px solid #3b82f6;
+    padding-bottom: 5pt;
+}
+
+.sticker-brand {
+    font-size: 8pt;
+    font-weight: bold;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.sticker-title {
+    font-size: 10pt;
+    font-weight: bold;
+    margin-top: 8pt;
+    color: #0f172a;
+}
+
+.prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4pt;
+    margin: 10pt 0;
+}
