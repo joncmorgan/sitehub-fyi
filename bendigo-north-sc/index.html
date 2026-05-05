@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bendigo North Soccer Club | Sitehub.fyi</title>
+    <meta name="version" content="2.3.3">
+    <meta name="generator" content="Uguide Build Engine">
+    <title>Bendigo North Soccer Club | Uguide.fyi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Link to the separate PDF Stylesheet (Used by WeasyPrint) -->
+    <!-- PDF Stylesheet (Advanced Page Logic) -->
     <link rel="stylesheet" href="pdf.css">
 
     <style>
@@ -22,11 +24,33 @@
             font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
 
-        /* Screen-only Enhancements */
+        /* --- VISIBILITY LOGIC --- */
+        
+        /* By default, hide PDF-only sections on the screen */
+        .pdf-only {
+            display: none !important;
+        }
+
+        /* Nav and Buttons are visible on screen */
+        .no-print {
+            display: block;
+        }
+
+        /* Toggle state when printing or for WeasyPrint */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .pdf-only {
+                display: block !important;
+            }
+        }
+
+        /* --- WEB STYLING --- */
         .category-header {
             border-left: 4px solid var(--accent);
             padding-left: 1rem;
-            margin: 2rem 0 1rem 0;
+            margin: 2.5rem 0 1.25rem 0;
             font-weight: 800;
             letter-spacing: -0.025em;
         }
@@ -35,14 +59,9 @@
             background: white;
             border-radius: 0.75rem;
             box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
-            transition: transform 0.2s;
         }
 
-        .asset-card:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Label Station Styles */
+        /* QR Sticker Styling */
         .qr-sticker {
             background: white;
             padding: 1rem;
@@ -50,58 +69,59 @@
             text-align: center;
         }
         .sticker-brand { font-size: 0.6rem; font-weight: bold; color: #64748b; margin-bottom: 0.25rem; }
-        .sticker-title { font-size: 0.75rem; font-weight: bold; margin-top: 0.5rem; line-height: 1; }
-
-        /* Ensure screen-only elements don't clutter the PDF if pdf.css fails to load */
-        @media print {
-            .no-print { display: none !important; }
-        }
+        .sticker-title { font-size: 0.75rem; font-weight: bold; margin-top: 0.5rem; line-height: 1.2; color: #0f172a; }
     </style>
 </head>
-<body class="pb-12">
+<body class="pb-24">
 
-    <!-- Cover Page Section (Hidden on Screen, visible in PDF via pdf.css) -->
+    <!-- 1. THE HIDDEN COVER PAGE (PDF ONLY) -->
     <div class="pdf-only pdf-cover">
         <div class="pdf-cover-content">
-            <h1 class="pdf-title text-4xl font-black">Bendigo North Soccer Club</h1>
-            <p class="pdf-subtitle text-xl mt-4">Building User Guide & Engagement Portal</p>
-            <div class="pdf-meta mt-12 text-slate-500">
-                <p>Generated: 2026</p>
-                <p>Powered by Sitehub.fyi</p>
+            <h1 class="pdf-title text-5xl font-black italic uppercase tracking-tighter">UGUIDE<span class="text-blue-500">.FYI</span></h1>
+            <h2 class="text-4xl font-bold mt-12 text-slate-900">Bendigo North Soccer Club</h2>
+            <p class="text-2xl mt-4 text-slate-500 uppercase tracking-[0.3em] font-light">Building User Guide</p>
+            <div class="mt-32 text-slate-400 text-sm">
+                <p class="font-bold text-slate-500 mb-1">OFFICIAL DIGITAL PORTAL</p>
+                <p>uguide.fyi/</p>
             </div>
         </div>
     </div>
 
-    <!-- Top Navigation -->
-    <nav class="bg-slate-900 text-white sticky top-0 z-50 no-print">
+    <!-- 2. TOP NAVIGATION (SCREEN ONLY) -->
+    <nav class="bg-slate-900 text-white sticky top-0 z-50 no-print shadow-xl">
         <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
-            <div class="font-bold text-xl tracking-tight">
-                SITEHUB<span class="text-blue-400">.FYI</span>
+            <div class="font-black text-xl tracking-tighter italic uppercase">
+                UGUIDE<span class="text-blue-400">.FYI</span>
             </div>
-            <a href="./guide.pdf" download class="bg-blue-600 hover:bg-blue-700 text-sm font-bold py-2 px-4 rounded-lg transition">
-                Download PDF
+            <a href="guide.pdf" download class="bg-blue-600 hover:bg-blue-500 text-white text-xs font-black py-2.5 px-5 rounded-full transition-all shadow-lg flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                DOWNLOAD PDF
             </a>
         </div>
     </nav>
 
-    <header class="max-w-4xl mx-auto px-4 pt-8 pb-4 no-print">
-        <h1 class="text-3xl font-black text-slate-900">Bendigo North Soccer Club</h1>
-        <p class="text-slate-500 mt-2">Digital Operations & Engagement Portal</p>
+    <header class="max-w-4xl mx-auto px-4 pt-12 pb-10 no-print">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-8">
+            <div>
+                <h1 class="text-5xl font-black text-slate-900 tracking-tighter">Bendigo North Soccer Club</h1>
+                <p class="text-slate-500 mt-3 text-xl font-medium">Digital User Guide & Operations Portal</p>
+            </div>
+        </div>
     </header>
 
-    <!-- Main Content by Green Star Category -->
-    <main class="max-w-4xl mx-auto px-4">
+    <!-- 3. MAIN CONTENT -->
+    <main class="max-w-4xl mx-auto px-4 mt-6">
         
-        <section class="mb-12 pdf-category-page">
-            <h2 class="category-header text-xl text-slate-800 uppercase tracking-wider">
+        <section class="mb-16 pdf-category-page">
+            <h2 class="category-header text-xl text-slate-800 uppercase tracking-widest font-bold">
                 Energy & Carbon
             </h2>
             
-            <div class="grid gap-4">
+            <div class="grid gap-6">
                 
-                <article class="asset-card p-6" id="solar-array">
-                    <h3 class="text-lg font-bold mb-3 text-slate-900">Solar Array</h3>
-                    <div class="prose prose-slate max-w-none text-slate-600">
+                <article class="asset-card p-8 border border-slate-200" id="solar-array">
+                    <h3 class="text-2xl font-bold mb-4 text-slate-900 tracking-tight">Solar Array</h3>
+                    <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed text-lg">
                         <p>6kW array instructions...</p><div class="my-6"><img src="https://placehold.co/600x400?text=Solar" class="rounded-xl shadow-sm border border-slate-200 w-full h-auto" alt="Asset Image"></div>
                     </div>
                 </article>
@@ -109,16 +129,16 @@
             </div>
         </section>
         
-        <section class="mb-12 pdf-category-page">
-            <h2 class="category-header text-xl text-slate-800 uppercase tracking-wider">
+        <section class="mb-16 pdf-category-page">
+            <h2 class="category-header text-xl text-slate-800 uppercase tracking-widest font-bold">
                 Indoor Environment (Comfort)
             </h2>
             
-            <div class="grid gap-4">
+            <div class="grid gap-6">
                 
-                <article class="asset-card p-6" id="hvac-controls">
-                    <h3 class="text-lg font-bold mb-3 text-slate-900">HVAC Controls</h3>
-                    <div class="prose prose-slate max-w-none text-slate-600">
+                <article class="asset-card p-8 border border-slate-200" id="hvac-controls">
+                    <h3 class="text-2xl font-bold mb-4 text-slate-900 tracking-tight">HVAC Controls</h3>
+                    <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed text-lg">
                         <p>Thermostat guide...</p><div class="my-6"><img src="https://placehold.co/600x400?text=HVAC" class="rounded-xl shadow-sm border border-slate-200 w-full h-auto" alt="Asset Image"></div>
                     </div>
                 </article>
@@ -126,16 +146,16 @@
             </div>
         </section>
         
-        <section class="mb-12 pdf-category-page">
-            <h2 class="category-header text-xl text-slate-800 uppercase tracking-wider">
+        <section class="mb-16 pdf-category-page">
+            <h2 class="category-header text-xl text-slate-800 uppercase tracking-widest font-bold">
                 Waste & Nature
             </h2>
             
-            <div class="grid gap-4">
+            <div class="grid gap-6">
                 
-                <article class="asset-card p-6" id="waste-stream-guide">
-                    <h3 class="text-lg font-bold mb-3 text-slate-900">Waste Stream Guide</h3>
-                    <div class="prose prose-slate max-w-none text-slate-600">
+                <article class="asset-card p-8 border border-slate-200" id="waste-stream-guide">
+                    <h3 class="text-2xl font-bold mb-4 text-slate-900 tracking-tight">Waste Stream Guide</h3>
+                    <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed text-lg">
                         <p>How to use FOGO bins...</p><div class="my-6"><img src="https://placehold.co/600x400?text=Waste" class="rounded-xl shadow-sm border border-slate-200 w-full h-auto" alt="Asset Image"></div>
                     </div>
                 </article>
@@ -144,43 +164,50 @@
         </section>
         
 
-        <!-- Physical Label Station -->
-        <section class="mt-16 bg-slate-100 p-8 rounded-2xl pdf-label-section">
-            <div class="no-print mb-8">
-                <h2 class="text-2xl font-black text-slate-900">Physical Label Station</h2>
-                <p class="text-slate-600 mt-2">Facilities Managers: Print this section to generate replacement QR stickers for on-site assets.</p>
-                <button onclick="window.print()" class="mt-4 bg-slate-900 text-white font-bold py-3 px-6 rounded-xl hover:bg-slate-800 transition">
-                    Print Sticker Sheet
+        <!-- 4. PHYSICAL LABEL STATION -->
+        <section class="mt-24 bg-slate-100 p-10 rounded-[2rem] pdf-label-section">
+            <div class="no-print mb-12">
+                <h2 class="text-3xl font-black tracking-tight text-slate-900">Physical Label Station</h2>
+                <p class="text-slate-600 mt-3 text-lg">Print this section on standard A4 paper to generate replacement QR stickers for on-site assets.</p>
+                <button onclick="window.print()" class="mt-8 bg-slate-900 text-white font-black py-4 px-10 rounded-2xl hover:bg-slate-800 transition-all shadow-xl flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    PRINT STICKER SHEET
                 </button>
             </div>
 
-            <div class="label-grid grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="label-grid grid grid-cols-2 md:grid-cols-4 gap-6">
                 
-                <div class="qr-sticker shadow-sm border border-slate-200">
-                    <div class="sticker-brand">SITEHUB.FYI</div>
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAAC8UlEQVR4nO2cTWrkMBSEq0aCLC3IAfoo8s1CjpQb2EfpG8jLgEzNQpLtMEOaMI5jD+8tmk77WxSI96OSHApfifHXl3DAeOON/1Z+Yo0eM9lPJDB5kPQgA9Ce+2P0GL8z7yRJrVB3GeQtA1EZiHcPRElSOkqP8XvzNTmnJwGTh3T30GuYWamJZH+gHuO/h5+p15vEHjMRkxPG8JN6jN+b50uqi4yRpIYu/6ge4/+N9wCA1ntdxkiAgM+Imj1jAoBOAKYj9Bi/Pz+X8RgAwJfkhJgA9q0dYyRJhqP0GL8fD20iOWnoJKCTWml2W2I4m37jH4SUXC3PURlAVz/Kniluntr6Xo+v6xuTkwa0/C1dF2s6Z1TkbPqNfxDVtwBKhq4rXRY5tsJt+XtJ3gOdwPgWIGD2xb8CAI2hDtaMb4vTcTb9xj8IKdUhq7bejV3phKjcEKvPF+QhKbfh6S9Ph2XcKt35bPqNfxBlfdHGqNKOS9aWWPyrzvrvNXknYCKlBFQbY3oSGWZipG8nSekoPcbvx7dtruoOqPy4yd8EaID134vy2/1v2SkVa2Ppuq3/2v73knwbnUvU/G0Ju2QtnKz/Xpaf2ayrOibzJQHsu1w+gHIcfJQe4/fjPQAnoktgvPvMmAJRTwqdiClAMQVoDOkAPcbvy7fzha7uf5vT0fyNanIsxuXZ9Bv/IFqHRfOf1byM1XWWMjRY/70g79evwvScgSkApVwP79RIAPEtlOp9Pv3Gfx7L+rpMdO/UeBOIbvYCnBhTAMbgMsZbPkCP8fvyf9zfWLbD5elaqWH+8zX59f2FLoM9ZpZbscsiswdQT5dOqN/4z6Jm7XoXp2uzsjaTFsy/uiaPtfh+MCnbJbvldofdr/sP+JlkcNIwkRomlkotJSd7v+ySvP/wl8uMb4GKAhjTc2YUUAbrY/QY/x18OzB6X14o89BQjOmZiPcnsT9Qj/F78R/uT7b90Tpa1Sflurv13+vx1GNmE/b/GYw3/kT8b2SXVo0gE+TJAAAAAElFTkSuQmCC" alt="QR Code" class="mx-auto w-full max-w-[120px]">
-                    <div class="sticker-title text-slate-800">Solar Array</div>
+                <div class="qr-sticker shadow-sm border border-slate-200 bg-white aspect-square flex flex-col justify-between overflow-hidden">
+                    <div class="sticker-brand tracking-[0.3em] py-2 bg-slate-50 text-slate-400">UGUIDE.FYI</div>
+                    <div class="flex-grow flex items-center justify-center p-4">
+                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAAC8UlEQVR4nO2cTWrkMBSEq0aCLC3IAfoo8s1CjpQb2EfpG8jLgEzNQpLtMEOaMI5jD+8tmk77WxSI96OSHApfifHXl3DAeOON/1Z+Yo0eM9lPJDB5kPQgA9Ce+2P0GL8z7yRJrVB3GeQtA1EZiHcPRElSOkqP8XvzNTmnJwGTh3T30GuYWamJZH+gHuO/h5+p15vEHjMRkxPG8JN6jN+b50uqi4yRpIYu/6ge4/+N9wCA1ntdxkiAgM+Imj1jAoBOAKYj9Bi/Pz+X8RgAwJfkhJgA9q0dYyRJhqP0GL8fD20iOWnoJKCTWml2W2I4m37jH4SUXC3PURlAVz/Kniluntr6Xo+v6xuTkwa0/C1dF2s6Z1TkbPqNfxDVtwBKhq4rXRY5tsJt+XtJ3gOdwPgWIGD2xb8CAI2hDtaMb4vTcTb9xj8IKdUhq7bejV3phKjcEKvPF+QhKbfh6S9Ph2XcKt35bPqNfxBlfdHGqNKOS9aWWPyrzvrvNXknYCKlBFQbY3oSGWZipG8nSekoPcbvx7dtruoOqPy4yd8EaID134vy2/1v2SkVa2Ppuq3/2v73knwbnUvU/G0Ju2QtnKz/Xpaf2ayrOibzJQHsu1w+gHIcfJQe4/fjPQAnoktgvPvMmAJRTwqdiClAMQVoDOkAPcbvy7fzha7uf5vT0fyNanIsxuXZ9Bv/IFqHRfOf1byM1XWWMjRY/70g79evwvScgSkApVwP79RIAPEtlOp9Pv3Gfx7L+rpMdO/UeBOIbvYCnBhTAMbgMsZbPkCP8fvyf9zfWLbD5elaqWH+8zX59f2FLoM9ZpZbscsiswdQT5dOqN/4z6Jm7XoXp2uzsjaTFsy/uiaPtfh+MCnbJbvldofdr/sP+JlkcNIwkRomlkotJSd7v+ySvP/wl8uMb4GKAhjTc2YUUAbrY/QY/x18OzB6X14o89BQjOmZiPcnsT9Qj/F78R/uT7b90Tpa1Sflurv13+vx1GNmE/b/GYw3/kT8b2SXVo0gE+TJAAAAAElFTkSuQmCC" alt="QR Code" class="max-h-full">
+                    </div>
+                    <div class="sticker-title uppercase tracking-tighter">Solar Array</div>
                 </div>
                 
-                <div class="qr-sticker shadow-sm border border-slate-200">
-                    <div class="sticker-brand">SITEHUB.FYI</div>
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAAC4ElEQVR4nO2cQW7jMAxFP8cGslSAHsBHkW9WzJF6A/kouYG1DCDjz4KU7XTaCYpJUwsgF4EjvwUBghT1qUSIr9j060s44Lzzzn8rn8VsxKIPQO5hi2fUJ+mf44/zD+Y7kiQBdEScAZHhKogkES89EEmS87P8cf7RvCVn7nWRvJyI6bwIEwBN8fGJ/jj/PfwimAZSRixCXk4UGcoP+uP8o3kmLMLfAymy5e/P+eP8//FakeshqSvaWgF9IbD0Ei99AQIB5Gf44/zj+bVrBiCvc22yxnyyuE+1kz6m/85/br0lJwAgL0JkANNQQORFY76XQI7mv/N3jJw7C2BkgW24oWB3ZrK3JNPR/Hf+jpEzNJYaaT31zvVtCiQQChDnzuPbHG+hTWGLakcmfBx4j29rPEyXglXqWq4tyLt09vi2yGt/JUBXBOEqiG8AgUWoa/kMIgNEfinH89/5O0ayfFCk69sUCrTdSvD9tz3e+uc4dwQC95202apPBq/PTfNMOl/oyJRPVM1jkl7DbYl9YP+d/8h2pVnPusGylinYVLC2016f2+QXHejbXgtARv1YBNNQIGMounZM/53/h1muArD9d+2l1uMS05rYnr8N8qZAkhcRJnSU1xmQMVxFRs3pRXz/bZKv+avHoNoz66677r/bV8/fxvgqQ96UYavFqGsmYnl/1R6/qpLAJkMCdf+1q3VrO+3xbYzfpe7+pFSVDhOhZ7j+3CZf4xuqghFnUyXfz5T8/Nsiv8qQ9YazaVXbEOl2pnQ0/52/Y9t8sKrOVXBeU3dTpz2+rfE99NYkAEE+A8gvhM4CUertyrwI4lvv88FGefv9AupPU6ahQOTcEXFe9OqkHZGP6b/zn1l/860rEhMogADIAk5nG+2L5vnR/Hf+K3ydNLAKGvJKUmS4im3Mx/bf+b/M9A2S1l/NqHclQ223ot+va5W/6Z/1qTPBarsYra2z988N8uL/z+C8883yfwCxlGZ7U2qk6QAAAABJRU5ErkJggg==" alt="QR Code" class="mx-auto w-full max-w-[120px]">
-                    <div class="sticker-title text-slate-800">HVAC Controls</div>
+                <div class="qr-sticker shadow-sm border border-slate-200 bg-white aspect-square flex flex-col justify-between overflow-hidden">
+                    <div class="sticker-brand tracking-[0.3em] py-2 bg-slate-50 text-slate-400">UGUIDE.FYI</div>
+                    <div class="flex-grow flex items-center justify-center p-4">
+                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAAC4ElEQVR4nO2cQW7jMAxFP8cGslSAHsBHkW9WzJF6A/kouYG1DCDjz4KU7XTaCYpJUwsgF4EjvwUBghT1qUSIr9j060s44Lzzzn8rn8VsxKIPQO5hi2fUJ+mf44/zD+Y7kiQBdEScAZHhKogkES89EEmS87P8cf7RvCVn7nWRvJyI6bwIEwBN8fGJ/jj/PfwimAZSRixCXk4UGcoP+uP8o3kmLMLfAymy5e/P+eP8//FakeshqSvaWgF9IbD0Ei99AQIB5Gf44/zj+bVrBiCvc22yxnyyuE+1kz6m/85/br0lJwAgL0JkANNQQORFY76XQI7mv/N3jJw7C2BkgW24oWB3ZrK3JNPR/Hf+jpEzNJYaaT31zvVtCiQQChDnzuPbHG+hTWGLakcmfBx4j29rPEyXglXqWq4tyLt09vi2yGt/JUBXBOEqiG8AgUWoa/kMIgNEfinH89/5O0ayfFCk69sUCrTdSvD9tz3e+uc4dwQC95202apPBq/PTfNMOl/oyJRPVM1jkl7DbYl9YP+d/8h2pVnPusGylinYVLC2016f2+QXHejbXgtARv1YBNNQIGMounZM/53/h1muArD9d+2l1uMS05rYnr8N8qZAkhcRJnSU1xmQMVxFRs3pRXz/bZKv+avHoNoz66677r/bV8/fxvgqQ96UYavFqGsmYnl/1R6/qpLAJkMCdf+1q3VrO+3xbYzfpe7+pFSVDhOhZ7j+3CZf4xuqghFnUyXfz5T8/Nsiv8qQ9YazaVXbEOl2pnQ0/52/Y9t8sKrOVXBeU3dTpz2+rfE99NYkAEE+A8gvhM4CUertyrwI4lvv88FGefv9AupPU6ahQOTcEXFe9OqkHZGP6b/zn1l/860rEhMogADIAk5nG+2L5vnR/Hf+K3ydNLAKGvJKUmS4im3Mx/bf+b/M9A2S1l/NqHclQ223ot+va5W/6Z/1qTPBarsYra2z988N8uL/z+C8883yfwCxlGZ7U2qk6QAAAABJRU5ErkJggg==" alt="QR Code" class="max-h-full">
+                    </div>
+                    <div class="sticker-title uppercase tracking-tighter">HVAC Controls</div>
                 </div>
                 
-                <div class="qr-sticker shadow-sm border border-slate-200">
-                    <div class="sticker-brand">SITEHUB.FYI</div>
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACz0lEQVR4nO2cQYrjMBBFX40NWSrQB+ijKDebM80N7KPkAAP2skHmz0JSrMxAh4ZMxhqqFiFtv0WBqK/SL6VNfCXmb1/CwXnnnf+r/GolLmxWHq8j5eGZ+s3G1+Tj/JP5QZJUhHq2EbP3hKSEdB0hSpKWV+Xj/LP5UpzrCHEB4nWE+Qx2AXKJX16Yj/PP4se7v4ZkhITgwxQXZPN5eGk+zv9NfjPpagbrSWZmBiH9w3ycfw4vKQEMsktIzf6b5ZogaXphPs4/k9+s1CoA60nE64hd1pPynjzXTvqY+Tv/SaiJZRBQPjSFRC7dPaaj5e/8g6irCkQl6qqmvPDE5q2vb3/8rX8eEvN5KYIcf5xkAJrfExB+jrC+pePl7/yDyL5FzP7GIGLttIjL0Aq312+PfNZnaanfppDQxFAa5phFGtfnPvkRwodBSKPFKR+IZFGbKdsdbKNYQa7PPfKNPteCTeVZjlu7lWv6aPk7/yCyNE8hNUurif3gdPOvgutzf3zdf5UaEwtC2XX3mvb9t0u+anFQ7ZD3Sq5TwVLOi+tzf3y1mbM010lwPiSF1u7IxyVf3854mh321mTlXio3XssgTVWzfX1741v/ivWcv1lc3oCQRkEC2Iw4vSIf55/Ll4b5NgtsGqpiYu0tttdvf3ydL9xOuO1UoUpzrM98fXvjaaeCYbc2htZ1Vh4sef32x5f1zcUZpHohZ69p7i5xHC1/5x/EPlXgtqp381/yC/cnu+T/vL8RWv+5npRu2/HR8nf+QTSzhGxD1gPvvhOXdsv1uUP+zrVaqL9aqJ40/OZ0HC1/5z+P7G9Y9jfyBxhgmi+DYD3ni5XF6Tha/s5/jbcLRbPtwmbM51Li/vuy/4RfR5jPZde175LM3j+syPXx83e+jazP5QpsOSRl/1msmwm2MV+ndP+5R/6uf96vSVa7srwJkvtXXfLm/5/Beee75X8B/Zl0rfw75HoAAAAASUVORK5CYII=" alt="QR Code" class="mx-auto w-full max-w-[120px]">
-                    <div class="sticker-title text-slate-800">Waste Stream Guide</div>
+                <div class="qr-sticker shadow-sm border border-slate-200 bg-white aspect-square flex flex-col justify-between overflow-hidden">
+                    <div class="sticker-brand tracking-[0.3em] py-2 bg-slate-50 text-slate-400">UGUIDE.FYI</div>
+                    <div class="flex-grow flex items-center justify-center p-4">
+                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACz0lEQVR4nO2cQYrjMBBFX40NWSrQB+ijKDebM80N7KPkAAP2skHmz0JSrMxAh4ZMxhqqFiFtv0WBqK/SL6VNfCXmb1/CwXnnnf+r/GolLmxWHq8j5eGZ+s3G1+Tj/JP5QZJUhHq2EbP3hKSEdB0hSpKWV+Xj/LP5UpzrCHEB4nWE+Qx2AXKJX16Yj/PP4se7v4ZkhITgwxQXZPN5eGk+zv9NfjPpagbrSWZmBiH9w3ycfw4vKQEMsktIzf6b5ZogaXphPs4/k9+s1CoA60nE64hd1pPynjzXTvqY+Tv/SaiJZRBQPjSFRC7dPaaj5e/8g6irCkQl6qqmvPDE5q2vb3/8rX8eEvN5KYIcf5xkAJrfExB+jrC+pePl7/yDyL5FzP7GIGLttIjL0Aq312+PfNZnaanfppDQxFAa5phFGtfnPvkRwodBSKPFKR+IZFGbKdsdbKNYQa7PPfKNPteCTeVZjlu7lWv6aPk7/yCyNE8hNUurif3gdPOvgutzf3zdf5UaEwtC2XX3mvb9t0u+anFQ7ZD3Sq5TwVLOi+tzf3y1mbM010lwPiSF1u7IxyVf3854mh321mTlXio3XssgTVWzfX1741v/ivWcv1lc3oCQRkEC2Iw4vSIf55/Ll4b5NgtsGqpiYu0tttdvf3ydL9xOuO1UoUpzrM98fXvjaaeCYbc2htZ1Vh4sef32x5f1zcUZpHohZ69p7i5xHC1/5x/EPlXgtqp381/yC/cnu+T/vL8RWv+5npRu2/HR8nf+QTSzhGxD1gPvvhOXdsv1uUP+zrVaqL9aqJ40/OZ0HC1/5z+P7G9Y9jfyBxhgmi+DYD3ni5XF6Tha/s5/jbcLRbPtwmbM51Li/vuy/4RfR5jPZde175LM3j+syPXx83e+jazP5QpsOSRl/1msmwm2MV+ndP+5R/6uf96vSVa7srwJkvtXXfLm/5/Beee75X8B/Zl0rfw75HoAAAAASUVORK5CYII=" alt="QR Code" class="max-h-full">
+                    </div>
+                    <div class="sticker-title uppercase tracking-tighter">Waste Stream Guide</div>
                 </div>
                 
             </div>
         </section>
     </main>
 
-    <footer class="max-w-4xl mx-auto px-4 mt-12 text-center text-slate-400 text-xs no-print">
-        <p>&copy; 2026 Co-Perform. All rights reserved.</p>
-        <p class="mt-1">Sitehub.fyi is a building engagement portal compliant with Green Star Performance v2.</p>
+    <footer class="max-w-4xl mx-auto px-4 mt-20 pb-16 text-center text-slate-400 text-xs no-print border-t border-slate-200 pt-12">
+        <div class="font-black text-slate-300 text-2xl mb-2 italic uppercase tracking-tighter">UGUIDE<span class="text-slate-200">.FYI</span></div>
+        <p>&copy; 2026 Co-Perform. Building User Guide System.</p>
     </footer>
 
 </body>
